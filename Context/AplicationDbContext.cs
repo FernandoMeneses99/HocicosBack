@@ -10,7 +10,7 @@ namespace HocicosBack.Context
 
         }
 
-        public DbSet<Producto> Productos { get; set; }
+        public DbSet<Productos> Productos { get; set; }
 
     }
 }
