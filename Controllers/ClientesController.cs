@@ -2,7 +2,7 @@
 
 namespace HocicosBack.Controllers
 {
-    public class ClienytesController : Controller
+    public class ClientesController : Controller
     {
         public IActionResult Index()
         {
