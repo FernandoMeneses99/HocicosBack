@@ -3,6 +3,7 @@
     public class Productos
     {
         public int ProductoID { get; set; }
+        public object? ProductoId { get; internal set; }
         public string Nombre { get; set; } = string.Empty!;
         public int Descripcion { get; set; }
         public string PrecioDeCompra { get; set; } = "";

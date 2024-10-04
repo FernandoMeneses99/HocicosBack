@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
 namespace HocicosBack.Controllers
 {
     public class ClientesController : Controller
