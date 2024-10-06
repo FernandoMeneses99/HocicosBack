@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
-namespace HocicosBacks.Models
+namespace HocicosBack.Models
 {
     public class Clientes
     {
@@ -24,16 +25,20 @@ namespace HocicosBacks.Models
 
         [Required]
         [StringLength(255)]
-        public string ContraseñaHash { get; set; }
+        public string ContrasenaHash { get; set; }
 
         [Required]
         [StringLength(500)]
-        public string Dirección { get; set; }
+        public string Direccion { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string Teléfono { get; set; }
+        public string Telefono { get; set; }
 
         public DateTime? FechaDeCreación { get; set; }
+
+        [JsonIgnore]
+        public ICollection<Pedidos>? Pedidos { get; set; }
     }
+
 }

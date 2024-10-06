@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
-namespace HocicosBacks.Models
+namespace HocicosBack.Models
 {
     public class Envios
     {
@@ -21,5 +22,8 @@ namespace HocicosBacks.Models
         public string DirecciónDeEnvío { get; set; }
 
         public DateTime? FechaDeEnvío { get; set; }
+        [JsonIgnore]
+        [ForeignKey("PedidoID")]
+        public Pedidos? Pedidos { get; set; }
     }
 }

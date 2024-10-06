@@ -1,14 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MicroServiceCRUD.Models;
 using System.Threading.Tasks;
 using HocicosBack.Models;
 using HocicosBacks.Models;
 
-namespace MicroServiceCRUD.Repositories
+namespace HocicosBack.Repositorios
 {
-    public class DatabaseService : DbContext
+    public class HocicosContext : DbContext
     {
-        public DatabaseService(DbContextOptions options) : base(options)
+        public HocicosContext(DbContextOptions options) : base(options)
         {
         }
 

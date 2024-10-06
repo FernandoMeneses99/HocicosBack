@@ -1,7 +1,14 @@
-﻿namespace HocicosBack.Repositorios.Interfaz
+﻿using HocicosBack.Models;
+
+namespace HocicosBack.Repositorios.Interfaz
 {
-    public class IClientesrepository
+    public interface IClientesRepository
     {
-        
+        Task<List<Clientes>> GetClientes();
+        Task<bool> PostClientes(Clientes clientes);
+        Task<List<Clientes>> GetClientesByID(int id);
+        Task<bool> UpdateClientes(Clientes clientes);
+        Task<bool> DeleteClientes(int id);
+
     }
 }
