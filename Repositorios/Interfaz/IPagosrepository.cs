@@ -1,6 +1,6 @@
 ﻿namespace HocicosBack.Repositorios.Interfaz
 {
-    public class IPedidos
+    public class IPagosrepository
     {
     }
 }

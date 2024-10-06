@@ -1,6 +1,6 @@
 ﻿namespace HocicosBack.Repositorios.Interfaz
 {
-    public class IItemsDePedidos
+    public class IProveedoresrepository
     {
     }
 }
