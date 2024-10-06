@@ -55,7 +55,22 @@ namespace HocicosBack.Repositorios
             modelBuilder.Entity<Clientes>().Property(c => c.Direccion).HasColumnName("Direccion");
             modelBuilder.Entity<Clientes>().Property(c => c.Telefono).HasColumnName("Telefono");
             modelBuilder.Entity<Clientes>().Property(c => c.FechaDeCreacion).HasColumnName("FechaDeCreación");
-       
+
+            //configuracion de pedidos
+            modelBuilder.Entity<Pedidos>().ToTable("Pedido").HasKey(c => c.PedidoID);
+            //el value se pone en todos los campos que sean llaves primarias
+            modelBuilder.Entity<Pedidos>().Property(p => p.PedidoID).HasColumnName("PedidoID").ValueGeneratedOnAdd();
+            modelBuilder.Entity<Pedidos>().Property(p => p.ClienteID).HasColumnName("ClienteID");
+            modelBuilder.Entity<Pedidos>().Property(p => p.FechaDePedido).HasColumnName("FechaDePedido");
+            modelBuilder.Entity<Pedidos>().Property(p => p.MontoTotal).HasColumnName("MontoTotal");
+            modelBuilder.Entity<Pedidos>().Property(p => p.EstadoDelPedido).HasColumnName("EstadoDelPedido");
+
+            //configuracion de la relaciion entre pedidos y clientes
+            modelBuilder.Entity<Pedidos>().HasOne(p => p.Clientes).WithMany(c => c.Pedidos).HasForeignKey(p => p.ClienteID);
+
+      
+
+
 
 
             // Configuración de Pedido
