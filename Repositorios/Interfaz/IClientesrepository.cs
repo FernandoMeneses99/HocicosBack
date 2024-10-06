@@ -1,6 +1,7 @@
 ﻿namespace HocicosBack.Repositorios.Interfaz
 {
-    public class IClientes
+    public class IClientesrepository
     {
+
     }
 }
