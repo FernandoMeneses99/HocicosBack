@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
-namespace HocicosBacks.Models
+namespace HocicosBack.Models
 { 
     public class Productos
     {

@@ -19,6 +19,6 @@ namespace HocicosBack.Repositorios
 
     public async Task<List<Clientes>> GetClientes()
     {
-        return await context.Clientes.ToListAsync();
+        return await _context.Clientes.ToListAsync();
     }
 }

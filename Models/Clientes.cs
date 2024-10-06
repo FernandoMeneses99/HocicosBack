@@ -35,7 +35,7 @@ namespace HocicosBack.Models
         [StringLength(50)]
         public string Telefono { get; set; }
 
-        public DateTime? FechaDeCreación { get; set; }
+        public DateTime? FechaDeCreacion { get; set; }
 
         [JsonIgnore]
         public ICollection<Pedidos>? Pedidos { get; set; }
