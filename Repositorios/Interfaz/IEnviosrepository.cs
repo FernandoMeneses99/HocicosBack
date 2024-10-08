@@ -1,5 +1,4 @@
-﻿
-using HocicosBack.Models;
+﻿using HocicosBack.Models;
 
 namespace HocicosBack.Repositorios.Interfaz
 {

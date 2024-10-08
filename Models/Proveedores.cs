@@ -1,4 +1,7 @@
-﻿namespace HocicosBack.Models
+﻿using HocicosBacks.Models;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace HocicosBack.Models
 {
     public class Proveedores
     {
@@ -7,5 +10,9 @@
         public string Telefono_Proveedor { get; set; }
         public string Direccion_Proveedor { get; set; }
         public string Email_Proveedor { get; set; }
+
+        public ICollection<Productos>? Envios { get; set; }
+
+
     }
 }
