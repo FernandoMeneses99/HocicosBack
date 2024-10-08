@@ -41,6 +41,9 @@ namespace HocicosBack.Controller
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> PostProveedores([FromBody] Proveedores proveedores)
         {
            
@@ -50,6 +53,9 @@ namespace HocicosBack.Controller
         }
 
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> UpDateProveedores(int id, [FromBody] Proveedores  proveedores) 
         {
             if (id != proveedores.ID_Proveedor) return BadRequest();
@@ -59,6 +65,9 @@ namespace HocicosBack.Controller
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> DeleteIDProveedor(int id)
         {
             var result = await _repository.DeleteProveedores (id);
