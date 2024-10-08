@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using HocicosBack.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HocicosBacks.Models
 {
@@ -17,10 +18,10 @@ namespace HocicosBacks.Models
         [ForeignKey("ID_Proveedor")]
         public Proveedor? Proveedor { get; set; }
         [JsonIgnore]
-        [ForeignKey("SaborID")] 
+        [ForeignKey("SaborID")]
         public Sabores sabor { get; set; }
 
         [JsonIgnore]
-        public ICollection<Sabores>? Sabores { get; set; } 
+        public ICollection<Sabores>? Sabores { get; set; }
     }
 }

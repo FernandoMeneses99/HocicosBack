@@ -12,4 +12,3 @@ namespace HocicosBack.Repositorios.Interfaz
 
     }
 }
-
