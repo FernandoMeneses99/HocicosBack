@@ -18,7 +18,7 @@ namespace HocicosBack.Models
 
         [JsonIgnore]
         [ForeignKey("SaborID")] 
-        public Sabores? sabores { get; set; }
+        public Sabores sabor { get; set; }
 
         [JsonIgnore]
         public ICollection<Sabores>? Sabores { get; set; } 
