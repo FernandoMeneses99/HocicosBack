@@ -12,8 +12,15 @@ namespace HocicosBacks.Models
         public int PrecioDeVenta { get; set; }
         public string FechaDeCreacion { get; set; } = "";
         public string ID_Proveedor { get; set; } = "";
+        public int? SaborID { get; set; }
 
         [ForeignKey("ID_Proveedor")]
         public Proveedor? Proveedor { get; set; }
+        [JsonIgnore]
+        [ForeignKey("SaborID")] 
+        public Sabores sabor { get; set; }
+
+        [JsonIgnore]
+        public ICollection<Sabores>? Sabores { get; set; } 
     }
 }
