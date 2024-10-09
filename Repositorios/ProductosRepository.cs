@@ -5,7 +5,7 @@ using HocicosBacks.Models;
 
 namespace HocicosBack.Repositorios
 {
-    public class ProductosRepository : IProductosRepository
+    public class ProductosRepository : IProductoRepository
     {
         private readonly HocicosContext _context;
 
