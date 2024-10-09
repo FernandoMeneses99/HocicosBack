@@ -42,7 +42,7 @@ namespace HocicosBack.Repositorios
             // Configuración de Sabor
             modelBuilder.Entity<Saboresrepository>().ToTable("Sabores").HasKey(s => s.SaborID);
 
-            modelBuilder.Entity<Saboresrepository>().HasOne(s => s.Productos).WithMany().HasForeignKey(s => s.ProductosID);
+            modelBuilder.Entity<Saboresrepository>().HasOne(s => s.Productos).WithMany().HasForeignKey(s => s.ProductoID);
 
             // Configuración de Cliente
             modelBuilder.Entity<Clientes>().ToTable("Clientes").HasKey(c => c.ClienteID);

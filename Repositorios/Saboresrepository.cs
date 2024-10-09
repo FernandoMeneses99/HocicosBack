@@ -1,6 +1,5 @@
 ﻿using HocicosBack.Models;
 using HocicosBack.Repositorios.Interfaz;
-using HocicosBacks.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace HocicosBack.Repositorios
@@ -9,6 +8,10 @@ namespace HocicosBack.Repositorios
     {
         
         private readonly HocicosContext _context;
+
+        public object Productos { get; internal set; }
+        public object? SaborID { get; internal set; }
+        public object ProductoID { get; internal set; }
 
         public Saboresrepository(HocicosContext context)
         {
