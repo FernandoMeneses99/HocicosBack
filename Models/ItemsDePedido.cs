@@ -15,7 +15,14 @@ namespace HocicosBack.Models
         // Propiedad de navegación
 
         [JsonIgnore]
-        [ForeignKey("ClienteID")]
-        public Pedidos? Pedidos { get; set;}
-       }
+        [ForeignKey("PedidoID" )]
+
+        [JsonIgnore]
+        [ForeignKey("ProductoID")]
+
+        [JsonIgnore]
+        [ForeignKey("SaboID")]
+
+
+    }
 }

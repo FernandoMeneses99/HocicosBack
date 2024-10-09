@@ -25,6 +25,8 @@ namespace HocicosBack.Models
         [Required]
         [StringLength(255)]
         public int CantidadEnStock { get; set; }
+
+        public ICollection<ItemsDePedido>? itemsDePedidos { get; set; }
     }
 
 }
