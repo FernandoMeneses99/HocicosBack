@@ -9,6 +9,10 @@ namespace HocicosBack.Repositorios
         
         private readonly HocicosContext _context;
 
+        public object Productos { get; internal set; }
+        public object? SaborID { get; internal set; }
+        public object ProductoID { get; internal set; }
+
         public Saboresrepository(HocicosContext context)
         {
             _context = context;
