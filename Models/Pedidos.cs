@@ -21,5 +21,7 @@ namespace HocicosBack.Models
         public ICollection<Pagos>? Pagos { get; set; }
         [JsonIgnore]
         public ICollection<Envios>? Envios { get; set; }
+        public object ItemDePedido { get; internal set; }
+        public object Cliente { get; internal set; }
     }
 }

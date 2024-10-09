@@ -17,5 +17,6 @@ namespace HocicosBack.Models
         [JsonIgnore]
         [ForeignKey("ClienteID")]
         public Pedidos? Pedidos { get; set;}
-       }
+        public object Productos { get; internal set; }
+    }
 }

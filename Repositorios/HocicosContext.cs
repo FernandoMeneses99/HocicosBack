@@ -81,7 +81,7 @@ namespace HocicosBack.Repositorios
             // Configuración de ItemDePedido
             modelBuilder.Entity<ItemsDePedido>().ToTable("ItemsDePedido").HasKey(i => i.ItemDePedidoID);
 
-            modelBuilder.Entity<ItemsDePedido>().HasOne(i => i.Pedidos).WithMany(p => p.ItemsDePedido).HasForeignKey(i => i.PedidoID);
+            modelBuilder.Entity<ItemsDePedido>().HasOne(i => i.Pedidos).WithMany(p => p.ItemDePedido).HasForeignKey(i => i.PedidoID);
 
             modelBuilder.Entity<ItemsDePedido>().HasOne(i => i.Productos).WithMany().HasForeignKey(i => i.ProductoID);
 
