@@ -1,7 +1,6 @@
 ﻿using HocicosBack.Repositorios.Interfaz;
 using Microsoft.EntityFrameworkCore;
 using HocicosBack.Models;
-using HocicosBacks.Models;
 
 namespace HocicosBack.Repositorios
 {
@@ -14,25 +13,25 @@ namespace HocicosBack.Repositorios
             _context = context;
         }
 
-        public async Task<List<Producto>> GetProductos()
+        public async Task<List<Productos>> GetProductos()
         {
             return await _context.Productos.ToListAsync();
         }
 
-        public async Task<Producto> GetProductoByID(int id)
+        public async Task<Productos> GetProductoByID(int id)
         {
             return await _context.Productos.FindAsync(id);
         }
 
-        public async Task<bool> PostProductos(Producto producto)
+        public async Task<bool> PostProductos(Productos productos)
         {
-            _context.Productos.Add(producto);
+            _context.Productos.Add(productos);
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> UpdateProductos(Producto producto)
+        public async Task<bool> UpdateProductos(Productos productos)
         {
-            _context.Productos.Update(producto);
+            _context.Productos.Update(productos);
             return await _context.SaveChangesAsync() > 0;
         }
 
@@ -42,8 +41,18 @@ namespace HocicosBack.Repositorios
             if (producto == null)
                 return false;
 
-            _context.Productos.Remove(producto);
+            _context.Productos.Remove(productos);
             return await _context.SaveChangesAsync() > 0;
+        }
+
+        public Task<ProductosRepository> GetProductosByID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> DeleteProductos(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

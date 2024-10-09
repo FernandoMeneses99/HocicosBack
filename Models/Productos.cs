@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace HocicosBacks.Models
 {
-    public class Producto
+    public class Productos
     {
         public int ProductoID { get; set; }
         public object? ProductoId { get; internal set; }

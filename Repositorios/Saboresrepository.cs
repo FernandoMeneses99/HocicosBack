@@ -1,6 +1,5 @@
 ﻿using HocicosBack.Models;
 using HocicosBack.Repositorios.Interfaz;
-using HocicosBacks.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace HocicosBack.Repositorios

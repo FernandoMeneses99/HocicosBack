@@ -2,7 +2,7 @@
 
 namespace HocicosBack.Controllers
 {
-    public class SaboresController : Controller
+    public class SaboresControllers : Controllers
     {
         public IActionResult Index()
         {

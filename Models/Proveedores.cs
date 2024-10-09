@@ -1,4 +1,4 @@
-﻿using HocicosBacks.Models;
+﻿using HocicosBack.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HocicosBack.Models
