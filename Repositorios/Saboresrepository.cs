@@ -25,15 +25,15 @@ namespace HocicosBack.Repositorios
             return await _context.Sabores.FindAsync(id);
         }
 
-        public async Task<bool> PostSabores(Sabores Sabores)
+        public async Task<bool> PostSabores(Sabores sabores)
         {
-            _context.Sabores.Add(Sabores);
+            _context.Sabores.Add(sabores);
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> UpdateSabores(Sabores Sabores)
+        public async Task<bool> UpdateSabores(Sabores sabores)
         {
-            _context.Sabores.Update(Sabores);
+            _context.Sabores.Update(sabores);
             return await _context.SaveChangesAsync() > 0;
         }
 
