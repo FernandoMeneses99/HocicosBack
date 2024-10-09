@@ -1,4 +1,5 @@
 ﻿using HocicosBack.Models;
+using HocicosBacks.Models;
 
 namespace HocicosBack.Repositorios.Interfaz
 {
@@ -6,7 +7,7 @@ namespace HocicosBack.Repositorios.Interfaz
     {
         Task<List<Sabores>> GetSabores();
         Task<bool> PostSabores(Sabores sabores);
-        Task<Sabores> GetSaboresByID(int id);
+        Task<ISaboresRepository> GetSaboresByID(int id);
         Task<bool> UpdateSabores(Sabores sabores);
         Task<bool> DeleteSabores(int id);
 

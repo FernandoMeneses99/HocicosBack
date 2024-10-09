@@ -14,25 +14,25 @@ namespace HocicosBack.Repositorios
             _context = context;
         }
 
-        public async Task<List<Productos>> GetProductos()
+        public async Task<List<Producto>> GetProductos()
         {
             return await _context.Productos.ToListAsync();
         }
 
-        public async Task<Productos> GetProductoByID(int id)
+        public async Task<Producto> GetProductoByID(int id)
         {
             return await _context.Productos.FindAsync(id);
         }
 
-        public async Task<bool> PostProductos(Productos productos)
+        public async Task<bool> PostProductos(Producto producto)
         {
-            _context.Productos.Add(productos);
+            _context.Productos.Add(producto);
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> UpdateProductos(Productos productos)
+        public async Task<bool> UpdateProductos(Producto producto)
         {
-            _context.Productos.Update(productos);
+            _context.Productos.Update(producto);
             return await _context.SaveChangesAsync() > 0;
         }
 

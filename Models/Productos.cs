@@ -1,9 +1,10 @@
 ﻿using HocicosBack.Models;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace HocicosBacks.Models
 {
-    public class Productos
+    public class Producto
     {
         public int ProductoID { get; set; }
         public object? ProductoId { get; internal set; }
