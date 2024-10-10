@@ -10,9 +10,9 @@ namespace HocicosBack.Controller
     [ApiController]
     public class PagosController : ControllerBase
     {
-        private readonly IClientesRepository _repository;
+        private readonly IPagosRepository _repository;
 
-        public PagosController(IClientesRepository repository)
+        public PagosController(IPagosRepository repository)
         {
             _repository = repository;
         }
@@ -21,10 +21,10 @@ namespace HocicosBack.Controller
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> GetClientes()
+        public async Task<IActionResult> GetPagos()
         {
-            var clientes = await _repository.GetClientes();
-            return Ok(clientes);
+            var pagos = await _repository.GetPagos();
+            return Ok(pagos);
         }
 
         [HttpGet("{id}")]
@@ -32,36 +32,36 @@ namespace HocicosBack.Controller
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> GetClientes(int id)
+        public async Task<IActionResult> GetPagos(int id)
 
         {
-            var cliente = await _repository.GetClientesByID(id);
-            if (cliente == null) return NotFound();
-            return Ok(cliente);
+            var pagos = await _repository.GetPagosByID(id);
+            if (pagos == null) return NotFound();
+            return Ok(pagos);
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostClientes([FromBody] Clientes clientes)
+        public async Task<IActionResult> PostClientes([FromBody] Pagos pagos)
         {
 
-            var result = await _repository.PostClientes(clientes);
-            if (result) return CreatedAtAction(nameof(GetClientes), new { id = clientes.ClienteID }, clientes);
+            var result = await _repository.PostPagos(pagos);
+            if (result) return CreatedAtAction(nameof(GetPagos), new { id = pagos.PagoId }, pagos);
             return BadRequest();
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateClientes(int id, [FromBody] Clientes clientes)
+        public async Task<IActionResult> UpdatePagos(int id, [FromBody] Pagos pagos)
         {
-            if (id != clientes.ClienteID) return BadRequest();
-            var result = await _repository.UpdateClientes(clientes);
+            if (id != pagos.PagoId) return BadRequest();
+            var result = await _repository.UpdatePagos(pagos);
             if (result) return Ok();
             return NotFound();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteClientes(int id)
+        public async Task<IActionResult> DeletePagos(int id)
         {
-            var result = await _repository.DeleteClientes(id);
+            var result = await _repository.DeletePagos(id);
             if (result) return NoContent();
             return NotFound();
         }
