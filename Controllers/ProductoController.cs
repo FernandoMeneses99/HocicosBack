@@ -11,9 +11,9 @@ namespace HocicosBack.Controller
     [ApiController]
     public class ProductosController : ControllerBase
     {
-        private readonly IProductosRepository _repository;
+        private readonly IProductoRepository _repository;
 
-        public ProductosController(IProductosRepository repository)
+        public ProductosController(IProductoRepository repository)
         {
             _repository = repository;
         }
