@@ -23,8 +23,8 @@ namespace HocicosBack.Controller
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> GetItemsDePedido()
         {
-            var envios = await _repository.GetItemsDePedidos();
-            return Ok(envios);
+            var itemsDePedidos = await _repository.GetItemsDePedidos();
+            return Ok(itemsDePedidos);
         }
 
         [HttpGet("{id}")]
