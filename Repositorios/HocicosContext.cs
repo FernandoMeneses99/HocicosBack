@@ -68,7 +68,7 @@ namespace HocicosBack.Repositorios
             //configuracion de la relaciion entre pedidos y clientes
             modelBuilder.Entity<Pedidos>().HasOne(p => p.Clientes).WithMany(c => c.Pedidos).HasForeignKey(p => p.ClienteID);
 
-      
+
 
 
 
@@ -81,7 +81,7 @@ namespace HocicosBack.Repositorios
             // Configuración de ItemDePedido
             modelBuilder.Entity<ItemsDePedido>().ToTable("ItemsDePedido").HasKey(i => i.ItemDePedidoID);
 
-            object value = modelBuilder.Entity<ItemsDePedido>().HasOne(i => i.Pedidos).WithMany(static p => p.ItemDePedido).HasForeignKey(i => i.PedidoID);
+            object value = modelBuilder.Entity<ItemsDePedido>().HasOne(i => i.Pedidos).WithMany(static p => p.ItemsDePedidos).HasForeignKey(i => i.PedidoID);
 
             modelBuilder.Entity<ItemsDePedido>().HasOne(i => i.Productos).WithMany().HasForeignKey(i => i.ProductoID);
 
@@ -98,16 +98,12 @@ namespace HocicosBack.Repositorios
             modelBuilder.Entity<Envios>().HasOne(e => e.Pedido).WithMany().HasForeignKey(e => e.PedidoID);
         }
 
-
-
+        // Método para guardar los cambios
+        public async Task<bool> SaveAsync()
+        {
+            return await SaveChangesAsync() > 0;
+        }
 
     }
-
-    // Método para guardar los cambios
-    public async Task<bool> SaveAsync()
-    {
-        return await SaveChangesAsync() > 0;
-    }
-}
 }
 

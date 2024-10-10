@@ -35,7 +35,7 @@ namespace HocicosBack.Repositorios
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> DeletePedido(int id)
+        public async Task<bool> DeletePedidos(int id)
         {
             var pedido = await _context.Pedidos.FindAsync(id);
             if (pedido == null)
