@@ -8,7 +8,7 @@ namespace HocicosBack.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int EnvíoID { get; set; }
+        public int EnvioID { get; set; } 
 
         [Required]
         public int PedidoID { get; set; }
@@ -22,10 +22,9 @@ namespace HocicosBack.Models
         public string DirecciónDeEnvío { get; set; }
 
         public DateTime? FechaDeEnvío { get; set; }
+
         [JsonIgnore]
         [ForeignKey("PedidoID")]
-        public Pedidos? Pedidos { get; set; }
-        public object? EnvioID { get; internal set; }
-        public object Pedido { get; internal set; }
+        public Pedidos? Pedido { get; set; } }
     }
 }
