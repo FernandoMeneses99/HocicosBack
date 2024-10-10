@@ -90,7 +90,7 @@ namespace HocicosBack.Repositorios
             // Configuración de Pago
             modelBuilder.Entity<Pagos>().ToTable("Pagos").HasKey(pa => pa.PagoId);
 
-            modelBuilder.Entity<Pagos>().HasOne(pa => pa.Pedido).WithMany().HasForeignKey(pa => pa.PedidoID);
+            modelBuilder.Entity<Pagos>().HasOne(pa => pa.Pedido).WithMany().HasForeignKey(pa => pa.Pedido);
 
             // Configuración de Envio
             modelBuilder.Entity<Envios>().ToTable("Envios").HasKey(e => e.EnvioID);

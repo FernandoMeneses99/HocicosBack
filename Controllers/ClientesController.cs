@@ -16,6 +16,7 @@ namespace HocicosBack.Controller
         {
             _repository = repository;
         }
+
         //poner los estados a todos los enpoid
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]

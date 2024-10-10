@@ -45,14 +45,14 @@ namespace HocicosBack.Controller
         {
 
             var result = await _repository.PostEnvios(envios);
-            if (result) return CreatedAtAction(nameof(GetEnvios), new { id = envios.EnvíoID }, envios);
+            if (result) return CreatedAtAction(nameof(GetEnvios), new { id = envios.EnvioID }, envios);
             return BadRequest();
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpDateEnvios(int id, [FromBody] Envios envios)
         {
-            if (id != envios.EnvíoID) return BadRequest();
+            if (id != envios.EnvioID) return BadRequest();
             var result = await _repository.UpdateEnvios(envios);
             if (result) return Ok();
             return NotFound();
