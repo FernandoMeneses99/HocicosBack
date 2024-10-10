@@ -18,24 +18,24 @@ namespace HocicosBack.Repositorios
             return await _context.Pagos.ToListAsync();
         }
 
-        public async Task<Pagos> GetPagoByID(int id)
+        public async Task<Pagos> GetPagosByID(int id)
         {
             return await _context.Pagos.FindAsync(id);
         }
 
-        public async Task<bool> PostPago(Pagos pago)
+        public async Task<bool> PostPagos(Pagos pago)
         {
             _context.Pagos.Add(pago);
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> UpdatePago(Pagos pago)
+        public async Task<bool> UpdatePagos(Pagos pago)
         {
             _context.Pagos.Update(pago);
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> DeletePago(int id)
+        public async Task<bool> DeletePagos(int id)
         {
             var pago = await _context.Pagos.FindAsync(id);
             if (pago == null)
