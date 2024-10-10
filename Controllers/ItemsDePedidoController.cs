@@ -23,7 +23,7 @@ namespace HocicosBack.Controller
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> GetItemsDePedido()
         {
-            var envios = await _repository.GetItemsDePedido();
+            var envios = await _repository.GetItemsDePedidos();
             return Ok(envios);
         }
 
@@ -32,17 +32,11 @@ namespace HocicosBack.Controller
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> GetItemsPedido(int id)
-
-namespace HocicosBack.Controllers
-{
-    public class ItemsDePedidoController : Controller
-    {
-        public IActionResult Index()
+        public async Task<IActionResult> GetItemsDePedidoByID(int id)
         {
-            var result = await _repository.DeleteEnvios(id);
-            if (result) return NoContent();
-            return NotFound();
-        }
+            var cliente = await _repository.GetItemsDePedidoByID(id);
+            if (cliente == null) return NotFound();
+            return Ok(cliente);
+    }
     }
 }

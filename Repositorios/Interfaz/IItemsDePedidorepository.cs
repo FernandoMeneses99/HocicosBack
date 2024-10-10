@@ -1,4 +1,6 @@
 ﻿using HocicosBack.Models;
+using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol.Core.Types;
 
 namespace HocicosBack.Repositorios.Interfaz
 {
@@ -12,4 +14,5 @@ namespace HocicosBack.Repositorios.Interfaz
 
     }
 }
+
 
