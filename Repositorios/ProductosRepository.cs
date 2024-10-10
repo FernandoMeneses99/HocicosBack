@@ -18,7 +18,7 @@ namespace HocicosBack.Repositorios
             return await _context.Productos.ToListAsync();
         }
 
-        public async Task<Productos> GetProductoByID(int id)
+        public async Task<Productos> GetProductosByID(int id)
         {
             return await _context.Productos.FindAsync(id);
         }
@@ -35,24 +35,15 @@ namespace HocicosBack.Repositorios
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> DeleteProducto(int id)
+        public async Task<bool> DeleteProductos(int id)
         {
             var producto = await _context.Productos.FindAsync(id);
             if (producto == null)
                 return false;
 
-            _context.Productos.Remove(productos);
+            _context.Productos.Remove(producto);
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public Task<ProductosRepository> GetProductosByID(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> DeleteProductos(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
