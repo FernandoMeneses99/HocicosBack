@@ -1,27 +1,39 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using System.Threading;
 
 namespace HocicosBack.Models
 {
     public class Pedidos
     {
+        [Key]
         public int PedidoID { get; set; }
-        public int ClienteID { get; set;}
-        public DateTime FechaDePedido { get; set;}
-        public decimal MontoTotal { get; set;}
-        public string EstadoDelPedido { get; set;}
-        // Propiedad de navegación
+
+        [Required]
+        public int ClienteID { get; set; }
+
+        [Required]
+        public DateTime FechaDePedido { get; set; }
+
+        [Required]
+        public decimal MontoTotal { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string EstadoDelPedido { get; set; }
+
+        // Propiedades de navegación
         [JsonIgnore]
         [ForeignKey("ClienteID")]
-        public Clientes? Clientes {get; set;}
+        public Clientes? Cliente { get; set; }
+
         [JsonIgnore]
         public ICollection<ItemsDePedido>? ItemsDePedidos { get; set; }
+
         [JsonIgnore]
         public ICollection<Pagos>? Pagos { get; set; }
+
         [JsonIgnore]
         public ICollection<Envios>? Envios { get; set; }
-        public object ItemDePedido { get; internal set; }
-        public object Cliente { get; internal set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using HocicosBack.Models;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
@@ -6,23 +7,30 @@ namespace HocicosBack.Models
 {
     public class Productos
     {
+        [Key]
         public int ProductoID { get; set; }
-        public object? ProductoId { get; internal set; }
+
+        [Required]
         public string Nombre { get; set; } = string.Empty!;
-        public int Descripcion { get; set; }
-        public string PrecioDeCompra { get; set; } = "";
-        public int PrecioDeVenta { get; set; }
-        public string FechaDeCreacion { get; set; } = "";
-        public string ID_Proveedor { get; set; } = "";
+
+        public string Descripcion { get; set; } = string.Empty!;
+
+        [Required]
+        public decimal PrecioDeCompra { get; set; }
+
+        [Required]
+        public decimal PrecioDeVenta { get; set; }
+
+        [Required]
+        public DateTime FechaDeCreacion { get; set; }
+
+        public int ID_Proveedor { get; set; }
         public int? SaborID { get; set; }
 
         [ForeignKey("ID_Proveedor")]
-        public Proveedor? Proveedor { get; set; }
-        [JsonIgnore]
-        [ForeignKey("SaborID")]
-        public Sabores sabor { get; set; }
+        public Proveedores? Proveedor { get; set; }
 
-        [JsonIgnore]
-        public ICollection<Sabores>? Sabores { get; set; }
+        [ForeignKey("SaborID")]
+        public Sabores? Sabor { get; set; }
     }
 }

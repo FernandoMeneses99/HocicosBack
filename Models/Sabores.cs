@@ -12,22 +12,20 @@ namespace HocicosBack.Models
 
         [Required]
         [StringLength(255)]
-        public string NombreDeSabor { get; set; }
+        public string Nombre { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public Decimal ContenidoDeColageno { get; set; }
+        [Range(0, 100)] // Ajusta el rango según corresponda
+        public decimal ContenidoDeColageno { get; set; }
 
         [Required]
         [StringLength(255)]
         public string Descripcion { get; set; }
 
         [Required]
-        [StringLength(255)]
         public int CantidadEnStock { get; set; }
 
-        public ICollection<ItemsDePedido>? itemsDePedidos { get; set; }
+        // Propiedad de navegación
+        public ICollection<ItemsDePedido>? ItemsDePedidos { get; set; }
     }
-
 }
-
