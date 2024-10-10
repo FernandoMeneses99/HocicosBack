@@ -10,7 +10,7 @@ namespace HocicosBack.Controller
     [ApiController]
     public class ItemsPedidoController : ControllerBase
     {
-        private readonly IItemsPedidoRepository _repository;
+        private readonly IItemsDePedidoRepository _repository;
 
         public ItemsPedidoController(IItemsDePedidoRepository repository)
         {
