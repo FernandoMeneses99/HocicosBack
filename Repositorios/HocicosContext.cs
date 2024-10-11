@@ -66,7 +66,7 @@ namespace HocicosBack.Repositorios
             modelBuilder.Entity<Pedidos>().Property(p => p.EstadoDelPedido).HasColumnName("EstadoDelPedido");
 
             //configuracion de la relaciion entre pedidos y clientes
-            modelBuilder.Entity<Pedidos>().HasOne(p => p.Clientes).WithMany(c => c.Pedidos).HasForeignKey(p => p.ClienteID);
+            modelBuilder.Entity<Pedidos>().HasOne(p => p.Cliente).WithMany(c => c.Pedidos).HasForeignKey(p => p.ClienteID);
 
 
 
@@ -81,11 +81,11 @@ namespace HocicosBack.Repositorios
             // Configuración de ItemDePedido
             modelBuilder.Entity<ItemsDePedido>().ToTable("ItemsDePedido").HasKey(i => i.ItemDePedidoID);
 
-            object value = modelBuilder.Entity<ItemsDePedido>().HasOne(i => i.Pedidos).WithMany(static p => p.ItemsDePedidos).HasForeignKey(i => i.PedidoID);
+            object value = modelBuilder.Entity<ItemsDePedido>().HasOne(i => i.Pedido).WithMany(static p => p.ItemsDePedidos).HasForeignKey(i => i.PedidoID);
 
-            modelBuilder.Entity<ItemsDePedido>().HasOne(i => i.Productos).WithMany().HasForeignKey(i => i.ProductoID);
+            modelBuilder.Entity<ItemsDePedido>().HasOne(i => i.Producto).WithMany().HasForeignKey(i => i.ProductoID);
 
-            modelBuilder.Entity<ItemsDePedido>().HasOne(i => i.Sabores).WithMany().HasForeignKey(i => i.SaborID);
+            modelBuilder.Entity<ItemsDePedido>().HasOne(i => i.Sabor).WithMany().HasForeignKey(i => i.SaborID);
 
             // Configuración de Pago
             modelBuilder.Entity<Pagos>().ToTable("Pagos").HasKey(pa => pa.PagoId);
