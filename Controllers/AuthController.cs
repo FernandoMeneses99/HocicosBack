@@ -20,7 +20,7 @@ namespace HocicosBack.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] Login login)
+        public IActionResult Login([FromBody] Models.Login login)
         {
             if (login == null || string.IsNullOrEmpty(login.Email) || string.IsNullOrEmpty(login.Password))
             {
