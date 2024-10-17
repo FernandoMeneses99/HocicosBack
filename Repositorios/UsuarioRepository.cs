@@ -25,6 +25,11 @@ namespace HocicosBack.Repositorios
             return await _context.Clientes.FindAsync(id);
         }
 
+        public async Task<Clientes> GetUsuarioByEmail(string email)
+        {
+            return await _context.Clientes.Where(x => x.CorreoElectronico == email).FirstOrDefaultAsync();
+        }
+
         public async Task<bool> PostUsuario(Clientes clientes)
         {
             _context.Clientes.Add(clientes);

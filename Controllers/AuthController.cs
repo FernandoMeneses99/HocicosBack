@@ -6,6 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using HocicosBack.Models;
+using HocicosBack.Repositorios.Interfaz;
 
 namespace HocicosBack.Controllers
 {
@@ -13,24 +14,29 @@ namespace HocicosBack.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
+        private readonly IConfiguration _configuration;
+        private readonly IUsuarioRepository _repository;
 
-        public AuthController()
+        public AuthController(IConfiguration configuration, IUsuarioRepository repository)
         {
-
+            _configuration = configuration;
+            _repository = repository;
         }
 
-        [HttpPost("login")]
-        public IActionResult Login([FromBody] Models.Login login)
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login([FromBody] Models.Login login)
         {
             if (login == null || string.IsNullOrEmpty(login.Email) || string.IsNullOrEmpty(login.Password))
             {
                 return BadRequest("Invalid client request");
             }
 
-          //Repositorio de usuario´para comprobar la validez del usuario
+            var usuario = await _repository.GetUsuarioByEmail(login.Email);
+            if (usuario == null)
+                return BadRequest();
 
             // Verificar las credenciales
-            if (login.Email == configuredUsername && login.Password == configuredPassword)
+            if (login.Email == usuario.CorreoElectronico && login.Password == usuario.ContrasenaHash)
             {
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
