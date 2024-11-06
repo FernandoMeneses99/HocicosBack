@@ -13,9 +13,14 @@ namespace HocicosBack
 
             services.AddDbContext<HocicosContext>(options => options.UseSqlServer(connectionString));
             services.AddScoped<IClientesRepository, ClientesRepository>();
-           //hacer el de las demas tablas
-
-
+            services.AddScoped<IEnviosRepository, Enviosrepository>();
+            services.AddScoped<IItemsDePedidoRepository, ItemsDePedidoRepository>();
+            services.AddScoped<IPagosRepository, PagosRepository>();
+            services.AddScoped<IPedidosRepository, PedidosRepository>();
+            services.AddScoped<IProductoRepository, ProductosRepository>();
+            services.AddScoped<IProveedoresRepository, ProveedoresRepository>();
+            services.AddScoped<ISaboresRepository, Saboresrepository>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
             return services;
         }

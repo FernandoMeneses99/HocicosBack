@@ -37,7 +37,7 @@ namespace HocicosBack.Repositorios
             // Configuración de Producto
             modelBuilder.Entity<Productos>().ToTable("Productos").HasKey(p => p.ProductoID);
 
-            modelBuilder.Entity<Productos>().HasOne(p => p.ID_Proveedor).WithMany().HasForeignKey(p => p.ID_Proveedor);
+            modelBuilder.Entity<Productos>().HasOne(p => p.Proveedor).WithMany(x => x.Productos);
 
             // Configuración de Sabor
             modelBuilder.Entity<Saboresrepository>().ToTable("Sabores").HasKey(s => s.SaborID);
@@ -71,7 +71,7 @@ namespace HocicosBack.Repositorios
 
 
 
-
+            modelBuilder.Entity<Productos>().HasOne(p => p.Sabor).WithMany(c => c.Productos).HasForeignKey(y => y.SaborID);
 
             // Configuración de Pedido
             modelBuilder.Entity<Pedidos>().ToTable("Pedidos").HasKey(p => p.PedidoID);

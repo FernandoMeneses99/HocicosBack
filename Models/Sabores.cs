@@ -27,5 +27,6 @@ namespace HocicosBack.Models
 
         // Propiedad de navegación
         public ICollection<ItemsDePedido>? ItemsDePedidos { get; set; }
+        public ICollection<Productos>? Productos { get; set; }
     }
 }

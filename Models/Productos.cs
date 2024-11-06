@@ -31,6 +31,6 @@ namespace HocicosBack.Models
         public Proveedores? Proveedor { get; set; }
 
         [ForeignKey("SaborID")]
-        public Sabores? Sabor { get; set; }
+        public Sabores Sabor { get; set; }
     }
 }
