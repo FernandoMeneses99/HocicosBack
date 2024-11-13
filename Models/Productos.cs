@@ -25,12 +25,17 @@ namespace HocicosBack.Models
         public DateTime FechaDeCreacion { get; set; }
 
         public int ID_Proveedor { get; set; }
-        public int? SaborID { get; set; }
+        public int SaborID { get; set; }
 
         [ForeignKey("ID_Proveedor")]
         public Proveedores? Proveedor { get; set; }
 
         [ForeignKey("SaborID")]
         public Sabores Sabor { get; set; }
+        public ICollection<Proveedores>? Proveedores { get; set; }
+
+        public ICollection<ItemsDePedido>? ItemsDePedidos { get; set; }
+        public ICollection<Sabores>? Sabores { get; set; }
+
     }
 }

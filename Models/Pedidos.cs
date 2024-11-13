@@ -35,5 +35,6 @@ namespace HocicosBack.Models
 
         [JsonIgnore]
         public ICollection<Envios>? Envios { get; set; }
+
     }
 }

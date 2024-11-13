@@ -26,5 +26,6 @@ namespace HocicosBack.Models
 
         // Relación con Productos
         public ICollection<Productos>? Productos { get; set; }
+
     }
 }

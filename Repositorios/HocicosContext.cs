@@ -40,9 +40,9 @@ namespace HocicosBack.Repositorios
             modelBuilder.Entity<Productos>().HasOne(p => p.Proveedor).WithMany(x => x.Productos);
 
             // Configuración de Sabor
-            modelBuilder.Entity<Saboresrepository>().ToTable("Sabores").HasKey(s => s.SaborID);
+            modelBuilder.Entity<Sabores>().ToTable("Sabores").HasKey(s => s.SaborID);
 
-            modelBuilder.Entity<Saboresrepository>().HasOne(s => s.Productos).WithMany().HasForeignKey(s => s.ProductoID);
+            modelBuilder.Entity<Sabores>().HasOne(s => s.Producto).WithMany(y => y.Sabores).HasForeignKey(s => s.ProductoID);
 
             // Configuración de Cliente
             modelBuilder.Entity<Clientes>().ToTable("Clientes").HasKey(c => c.ClienteID);
@@ -69,9 +69,8 @@ namespace HocicosBack.Repositorios
             modelBuilder.Entity<Pedidos>().HasOne(p => p.Cliente).WithMany(c => c.Pedidos).HasForeignKey(p => p.ClienteID);
 
 
+            modelBuilder.Entity<ItemsDePedido>().HasOne(p => p.Producto).WithMany(c => c.ItemsDePedidos).HasForeignKey(y => y.ProductoID);
 
-
-            modelBuilder.Entity<Productos>().HasOne(p => p.Sabor).WithMany(c => c.Productos).HasForeignKey(y => y.SaborID);
 
             // Configuración de Pedido
             modelBuilder.Entity<Pedidos>().ToTable("Pedidos").HasKey(p => p.PedidoID);
@@ -90,7 +89,7 @@ namespace HocicosBack.Repositorios
             // Configuración de Pago
             modelBuilder.Entity<Pagos>().ToTable("Pagos").HasKey(pa => pa.PagoId);
 
-            modelBuilder.Entity<Pagos>().HasOne(pa => pa.Pedido).WithMany().HasForeignKey(pa => pa.Pedido);
+            modelBuilder.Entity<Pagos>().HasOne(pa => pa.Pedido).WithMany(px => px.Pagos).HasForeignKey(pa => pa.PedidoId);
 
             // Configuración de Envio
             modelBuilder.Entity<Envios>().ToTable("Envios").HasKey(e => e.EnvioID);

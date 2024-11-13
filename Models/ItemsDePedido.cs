@@ -36,5 +36,6 @@ namespace HocicosBack.Models
         [JsonIgnore]
         [ForeignKey("SaborID")]
         public Sabores? Sabor { get; set; }
+
     }
 }

@@ -25,8 +25,11 @@ namespace HocicosBack.Models
         [Required]
         public int CantidadEnStock { get; set; }
 
+        [ForeignKey("ProductoID")]
+        public int ProductoID { get; set; }
+
         // Propiedad de navegación
         public ICollection<ItemsDePedido>? ItemsDePedidos { get; set; }
-        public ICollection<Productos>? Productos { get; set; }
+        public Productos? Producto { get; set; }
     }
 }
