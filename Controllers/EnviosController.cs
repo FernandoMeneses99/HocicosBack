@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using HocicosBack.Repositorios.Interfaz;
 using HocicosBack.Models;
+using HocicosBack.Repositories;
 
 
 namespace HocicosBack.Controller

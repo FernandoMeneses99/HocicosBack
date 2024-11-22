@@ -46,6 +46,7 @@ namespace HocicosBack.Repositorios
 
             // Configuración de Cliente
             modelBuilder.Entity<Clientes>().ToTable("Clientes").HasKey(c => c.ClienteID);
+
             //el value se pone en todos los campos que sean llaves primarias
             modelBuilder.Entity<Clientes>().Property(c => c.ClienteID).HasColumnName("ClienteID").ValueGeneratedOnAdd();
             modelBuilder.Entity<Clientes>().Property(c => c.NombreComercial).HasColumnName("NombreComercial");
@@ -58,6 +59,7 @@ namespace HocicosBack.Repositorios
 
             //configuracion de pedidos
             modelBuilder.Entity<Pedidos>().ToTable("Pedidos").HasKey(c => c.PedidoID);
+
             //el value se pone en todos los campos que sean llaves primarias
             modelBuilder.Entity<Pedidos>().Property(p => p.PedidoID).HasColumnName("PedidoID").ValueGeneratedOnAdd();
             modelBuilder.Entity<Pedidos>().Property(p => p.ClienteID).HasColumnName("ClienteID");
@@ -65,7 +67,7 @@ namespace HocicosBack.Repositorios
             modelBuilder.Entity<Pedidos>().Property(p => p.MontoTotal).HasColumnName("MontoTotal");
             modelBuilder.Entity<Pedidos>().Property(p => p.EstadoDelPedido).HasColumnName("EstadoDelPedido");
 
-            //configuracion de la relaciion entre pedidos y clientes
+            //configuracion de la relacion entre pedidos y clientes
             modelBuilder.Entity<Pedidos>().HasOne(p => p.Cliente).WithMany(c => c.Pedidos).HasForeignKey(p => p.ClienteID);
 
 
@@ -75,7 +77,7 @@ namespace HocicosBack.Repositorios
             // Configuración de Pedido
             modelBuilder.Entity<Pedidos>().ToTable("Pedidos").HasKey(p => p.PedidoID);
 
-            modelBuilder.Entity<Pedidos>().HasOne(p => p.Cliente).WithMany().HasForeignKey(p => p.ClienteID);
+            modelBuilder.Entity<Pedidos>().HasOne(p => p.Cliente).WithMany(c => c.Pedidos).HasForeignKey(p => p.ClienteID).OnDelete(DeleteBehavior.Cascade);
 
             // Configuración de ItemDePedido
             modelBuilder.Entity<ItemsDePedido>().ToTable("ItemsDePedido").HasKey(i => i.ItemDePedidoID);
@@ -91,18 +93,25 @@ namespace HocicosBack.Repositorios
 
             modelBuilder.Entity<Pagos>().HasOne(pa => pa.Pedido).WithMany(px => px.Pagos).HasForeignKey(pa => pa.PedidoId);
 
-            // Configuración de Envio
-            modelBuilder.Entity<Envios>().ToTable("Envios").HasKey(e => e.EnvioID);
+            // Configuración de la entidad Envios
+            modelBuilder.Entity<Envios>(entity =>
+            {
+                entity.ToTable("Envios");entity.HasKey(e => e.EnvioID); // Clave primaria
 
-            modelBuilder.Entity<Envios>().HasOne(e => e.Pedido).WithMany().HasForeignKey(e => e.PedidoID);
+                // Configuración de relaciones
+                entity.HasOne(e => e.Pedido).WithMany().HasForeignKey(e => e.PedidoID);
 
-            // Configuración
+                // Configuración de propiedades
+                entity.Property(p => p.EnvioID).HasColumnName("EnvioID").ValueGeneratedOnAdd();
 
-            modelBuilder.Entity<Envios>().Property(p => p.EnvioID).HasColumnName("EnvioID").ValueGeneratedOnAdd();
-            modelBuilder.Entity<Envios>().Property(p => p.PedidoID).HasColumnName("PedidoID");
-            modelBuilder.Entity<Envios>().Property(p => p.MetodoDeEnvio).HasColumnName("MetodoDeEnvio");
-            modelBuilder.Entity<Envios>().Property(p => p.DireccionDeEnvio).HasColumnName("DireccionDeEnvio");
-            modelBuilder.Entity<Envios>().Property(p => p.FechaDeEnvio).HasColumnName("FechaDeEnvio");
+                entity.Property(p => p.PedidoID).HasColumnName("PedidoID").IsRequired();
+
+                entity.Property(p => p.MetodoDeEnvio).HasColumnName("MetodoDeEnvio").HasMaxLength(50).IsRequired();
+
+                entity.Property(p => p.DireccionDeEnvio).HasColumnName("DireccionDeEnvio").HasMaxLength(500).IsRequired();
+
+                entity.Property(p => p.FechaDeEnvio).HasColumnName("FechaDeEnvio").HasColumnType("datetime");
+            });
         }
 
         // Método para guardar los cambios

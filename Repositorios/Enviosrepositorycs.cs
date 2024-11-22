@@ -1,54 +1,50 @@
-﻿using HocicosBack.Models;
-using HocicosBack.Repositorios.Interfaz;
+﻿using HocicosBack.Data;
+using HocicosBack.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace HocicosBack.Repositorios
+namespace HocicosBack.Repositories
 {
-    public class Enviosrepository : IEnviosRepository
+    public class EnviosRepository : IEnviosRepository
     {
-           private readonly HocicosContext _context;
+        private readonly ApplicationDbContext _context;
 
-            public Enviosrepository(HocicosContext context)
+        public EnviosRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<IEnumerable<Envios>> GetAllEnviosAsync()
+        {
+            return await _context.Envios.ToListAsync();
+        }
+
+        public async Task<Envios?> GetEnvioByIdAsync(int id)
+        {
+            return await _context.Envios.FindAsync(id);
+        }
+
+        public async Task AddEnvioAsync(Envios envio)
+        {
+            await _context.Envios.AddAsync(envio);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateEnvioAsync(Envios envio)
+        {
+            _context.Envios.Update(envio);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteEnvioAsync(int id)
+        {
+            var envio = await GetEnvioByIdAsync(id);
+            if (envio != null)
             {
-                _context = context;
+                _context.Envios.Remove(envio);
+                await _context.SaveChangesAsync();
             }
-
-            // Obtener todos los envíos
-            public async Task<List<Envios>> GetEnvios()
-            {
-                return await _context.Envios.ToListAsync();
-            }
-
-            // Obtener un envío por su ID
-            public async Task<Envios> GetEnviosByID(int id)
-            {
-                return await _context.Envios.FindAsync(id);
-            }
-
-            // Insertar un nuevo envío
-            public async Task<bool> PostEnvios(Envios envios)
-            {
-                _context.Envios.Add(envios);
-                return await _context.SaveChangesAsync() > 0;
-            }
-
-            // Actualizar un envío existente
-            public async Task<bool> UpdateEnvios(Envios envios)
-            {
-                _context.Envios.Update(envios);
-                return await _context.SaveChangesAsync() > 0;
-            }
-
-            // Eliminar un envío por su ID
-            public async Task<bool> DeleteEnvios(int id)
-            {
-                var envios = await _context.Envios.FindAsync(id);
-                if (envios == null)
-                    return false;
-
-                _context.Envios.Remove(envios);
-                return await _context.SaveChangesAsync() > 0;
-            }
-
+        }
     }
 }
