@@ -57,7 +57,7 @@ namespace HocicosBack.Repositorios
             modelBuilder.Entity<Clientes>().Property(c => c.FechaDeCreacion).HasColumnName("FechaDeCreación");
 
             //configuracion de pedidos
-            modelBuilder.Entity<Pedidos>().ToTable("Pedido").HasKey(c => c.PedidoID);
+            modelBuilder.Entity<Pedidos>().ToTable("Pedidos").HasKey(c => c.PedidoID);
             //el value se pone en todos los campos que sean llaves primarias
             modelBuilder.Entity<Pedidos>().Property(p => p.PedidoID).HasColumnName("PedidoID").ValueGeneratedOnAdd();
             modelBuilder.Entity<Pedidos>().Property(p => p.ClienteID).HasColumnName("ClienteID");
@@ -95,6 +95,14 @@ namespace HocicosBack.Repositorios
             modelBuilder.Entity<Envios>().ToTable("Envios").HasKey(e => e.EnvioID);
 
             modelBuilder.Entity<Envios>().HasOne(e => e.Pedido).WithMany().HasForeignKey(e => e.PedidoID);
+
+            // Configuración
+
+            modelBuilder.Entity<Envios>().Property(p => p.EnvioID).HasColumnName("EnvioID").ValueGeneratedOnAdd();
+            modelBuilder.Entity<Envios>().Property(p => p.PedidoID).HasColumnName("PedidoID");
+            modelBuilder.Entity<Envios>().Property(p => p.MetodoDeEnvio).HasColumnName("MetodoDeEnvio");
+            modelBuilder.Entity<Envios>().Property(p => p.DireccionDeEnvio).HasColumnName("DireccionDeEnvio");
+            modelBuilder.Entity<Envios>().Property(p => p.FechaDeEnvio).HasColumnName("FechaDeEnvio");
         }
 
         // Método para guardar los cambios

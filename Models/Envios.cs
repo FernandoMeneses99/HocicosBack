@@ -15,13 +15,13 @@ namespace HocicosBack.Models
 
         [Required]
         [StringLength(50)]
-        public string MétodoDeEnvío { get; set; }
+        public string MetodoDeEnvio { get; set; }
 
         [Required]
         [StringLength(500)]
-        public string DirecciónDeEnvío { get; set; }
+        public string DireccionDeEnvio { get; set; }
 
-        public DateTime? FechaDeEnvío { get; set; }
+        public DateTime? FechaDeEnvio { get; set; }
 
         [JsonIgnore]
         [ForeignKey("PedidoID")]
